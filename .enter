@@ -1,0 +1,4 @@
+alias a=./appframework
+alias m=make
+alias g='gdb appframework'
+export PS1="\e[1;31mApp Framework : \e[0m"
