@@ -5,7 +5,8 @@ CC_INCS				       =
 LINK_OPTS			       = -g -LGeneralUtilities -LRPiBaseModules
 LINK_LIBS			       = -lutils -llinenoise -lmongoose -lpthread -lm
 
-TARGET				       = appframework
+include					 app.mk
+
 OBJS				       = $(sort					\
 					   main.o				\
 					   HTTPServer.o				\
@@ -14,8 +15,8 @@ OBJS				       = $(sort					\
 					   WebConnection.o			\
 					  )
 LIBS				       = 
-%.o				      : %.c
 
+%.o				      : %.c
 					 @echo [CC] $<
 					 @$(CC) $(CC_OPTS) $(CC_INCS) $<
 
