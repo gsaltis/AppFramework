@@ -20,7 +20,6 @@ LIBS				       =
 					 @echo [CC] $<
 					 @$(CC) $(CC_OPTS) $(CC_INCS) $<
 
-.PHONY				       : $(TARGET)
 $(TARGET)			       : $(OBJS)
 					 @echo [LD] $(TARGET)
 					 @$(LINK) $(LINK_OPTS) -o $(TARGET) $(OBJS) $(LINK_LIBS) $(LIBS)
