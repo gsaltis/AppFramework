@@ -37,6 +37,7 @@
 #include "GeneralUtilities/ANSIColors.h"
 #include "GeneralUtilities/json.h"
 #include "UserInterfaceServer.h"
+#include "main.h"
 
 /*****************************************************************************!
  * Local Macros
@@ -334,6 +335,10 @@ WebSocketHandleInit
 {
   JSONOut*                              body;
   body = JSONOutCreateObject("body");
+  JSONOutObjectAddObjects(body,
+                          JSONOutCreateString("appname", mainAppName),
+                          JSONOutCreateString("appdesc", mainAppDescription),
+                          NULL);
   WebSocketServerSendResponse(InConnection, body, InJSONDoc, "init");
 }
 
