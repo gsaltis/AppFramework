@@ -21,7 +21,7 @@
  * Local Headers
  *****************************************************************************/
 #include "UserInterfaceServer.h"
-#include "GeneralUtilities/String.h"
+#include "GeneralUtilities/StringUtils.h"
 #include "RPiBaseModules/linenoise.h"
 #include "GeneralUtilities/ANSIColors.h"
 

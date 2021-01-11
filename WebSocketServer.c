@@ -30,12 +30,12 @@
  *****************************************************************************/
 #include "WebSocketServer.h"
 #include "WebConnection.h"
-#include "JSONIF.h"
-#include "JSONOut.h"
-#include "GeneralUtilities/String.h"
+#include "GeneralUtilities/JSONIF.h"
+#include "GeneralUtilities/JSONOut.h"
+#include "GeneralUtilities/StringUtils.h"
 #include "GeneralUtilities/MemoryManager.h"
 #include "GeneralUtilities/ANSIColors.h"
-#include "RPiBaseModules/json.h"
+#include "GeneralUtilities/json.h"
 #include "UserInterfaceServer.h"
 
 /*****************************************************************************!

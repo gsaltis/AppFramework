@@ -3,7 +3,7 @@ LINK				       = gcc
 CC_OPTS				       = -c -g -Wall
 CC_INCS				       = 
 LINK_OPTS			       = -g -LGeneralUtilities -LRPiBaseModules
-LINK_LIBS			       = -lutils -ljson -llinenoise -lmongoose -lpthread -lm
+LINK_LIBS			       = -lutils -llinenoise -lmongoose -lpthread -lm
 
 TARGET				       = appframework
 OBJS				       = $(sort					\
@@ -12,8 +12,6 @@ OBJS				       = $(sort					\
 					   UserInterfaceServer.o		\
 					   WebSocketServer.o			\
 					   WebConnection.o			\
-					   JSONIF.o				\
-					   JSONOut.o				\
 					  )
 LIBS				       = 
 %.o				      : %.c

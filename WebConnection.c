@@ -20,7 +20,7 @@
  *****************************************************************************/
 #include "WebConnection.h"
 #include "GeneralUtilities/MemoryManager.h"
-#include "GeneralUtilities/String.h"
+#include "GeneralUtilities/StringUtils.h"
 #include "RPiBaseModules/mongoose.h"
 
 /*****************************************************************************!

@@ -19,7 +19,7 @@
  *****************************************************************************/
 #include "GeneralUtilities/ANSIColors.h"
 #include "RPiBaseModules/mongoose.h"
-#include "GeneralUtilities/String.h"
+#include "GeneralUtilities/StringUtils.h"
 #include "GeneralUtilities/MemoryManager.h"
 #include "HTTPServer.h"
 #include "WebSocketServer.h"
