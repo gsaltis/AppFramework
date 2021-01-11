@@ -39,12 +39,4 @@ void
 HTTPServerInitialize
 ();
 
-void
-HTTPServerSetDirectory
-(string InFilename);
-
-void
-HTTPServerSetPort
-(string InPort);
-
 #endif // _httpserver_h_

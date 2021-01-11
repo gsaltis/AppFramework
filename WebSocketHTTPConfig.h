@@ -1,69 +1,62 @@
 /*****************************************************************************
- * FILE NAME    : main.c
- * DATE         : January 7 2021
- * PROJECT      : NONE
+ * FILE NAME    : WebSocketHTTPConfig.h
+ * DATE         : January 11 2021
  * COPYRIGHT    : Copyright (C) 2021 by Gregory R Saltis
  *****************************************************************************/
+#ifndef _websockethttpconfig_h_
+#define _websockethttpconfig_h_
 
 /*****************************************************************************!
  * Global Headers
  *****************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <stdbool.h>
 #include <stdint.h>
-#include <pthread.h>
+#include <string.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
-#include "main.h"
-#include "mainconfig.h"
-#include "HTTPServer.h"
-#include "UserInterfaceServer.h"
-#include "WebSocketServer.h"
-#include "WebSocketHTTPConfig.h"
+#include "GeneralUtilities/StringUtils.h"
 
 /*****************************************************************************!
- * Local Macros
+ * Exported Macros
  *****************************************************************************/
 
 /*****************************************************************************!
- * Local Data
+ * Exported Data
  *****************************************************************************/
 
 /*****************************************************************************!
- * Local Functions
- *****************************************************************************/
-static void
-MainInitialize
-();
-
-/*****************************************************************************!
- * Function : main
- *****************************************************************************/
-int
-main
-(int argc, char** argv)
-{
-  MainInitialize();
-  HTTPServerStart();
-  pthread_join(HTTPServerGetThreadID(), NULL);
-  pthread_join(UserInterfaceServerGetThreadID(), NULL);
-  return EXIT_SUCCESS;
-}
-
-
-/*****************************************************************************!
- * Function : MainInitialize
+ * Exported Functions
  *****************************************************************************/
 void
-MainInitialize
-()
-{
-  WebSocketHTTPInitialize();
-  WebSocketServerInitialize();
-  HTTPServerInitialize();
-  UserInterfaceServerInitialize();
-}
+WebSocketHTTPInitialize
+();
+
+void
+WebSocketHTTPSetHTTPPortAddress
+(string InHTTPPortAddress);
+
+void
+WebSocketHTTPSetWebSocketPortAddress
+(string InWebSocketPortAddress);
+
+void
+WebSocketHTTPSetWWWDirectory
+(string InWWWDirectory);
+
+string
+WebSocketHTTPGetWebSocketHTTPPortAddress
+();
+
+string
+WebSocketHTTPGetHTTPPortAddress
+();
+
+string
+WebSocketHTTPGetWWWDirectory
+();
+
+#endif /* _websockethttpconfig_h_*/

@@ -13,6 +13,7 @@ OBJS				       = $(sort					\
 					   UserInterfaceServer.o		\
 					   WebSocketServer.o			\
 					   WebConnection.o			\
+					   WebSocketHTTPConfig.o		\
 					  )
 LIBS				       = 
 

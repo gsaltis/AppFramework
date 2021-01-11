@@ -22,6 +22,7 @@
 #include "GeneralUtilities/MemoryManager.h"
 #include "GeneralUtilities/StringUtils.h"
 #include "RPiBaseModules/mongoose.h"
+#include "WebSocketHTTPConfig.h"
 
 /*****************************************************************************!
  * Local Macros

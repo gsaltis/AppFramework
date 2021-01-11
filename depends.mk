@@ -9,6 +9,8 @@ UserInterfaceServer.o: UserInterfaceServer.c UserInterfaceServer.h \
 WebConnection.o: WebConnection.c WebConnection.h \
  RPiBaseModules/mongoose.h GeneralUtilities/MemoryManager.h \
  GeneralUtilities/StringUtils.h
+WebSocketHTTPConfig.o: WebSocketHTTPConfig.c WebSocketHTTPConfig.h \
+ GeneralUtilities/StringUtils.h
 WebSocketServer.o: WebSocketServer.c WebSocketServer.h \
  GeneralUtilities/StringUtils.h WebConnection.h RPiBaseModules/mongoose.h \
  GeneralUtilities/JSONIF.h GeneralUtilities/json.h \

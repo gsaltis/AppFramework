@@ -23,6 +23,7 @@
 #include "GeneralUtilities/MemoryManager.h"
 #include "HTTPServer.h"
 #include "WebSocketServer.h"
+#include "WebSocketHTTPConfig.h"
 
 /*****************************************************************************!
  * Local Macros
@@ -39,18 +40,6 @@ HTTPServerPollPeriod = 20;
 
 static struct mg_serve_http_opts
 HTTPServerOptions;
-
-static string
-HTTPWWWDirectoryDefault = "www";
-
-static string
-HTTPWWWDirectory = NULL;
-
-static string
-HTTPPortAddress = NULL;
-
-static string
-HTTPPortAddressDefault = "8001";
 
 static struct mg_connection*
 HTTPConnection;
@@ -76,8 +65,6 @@ void
 HTTPServerInitialize
 ()
 {
-  HTTPPortAddress = StringCopy(HTTPPortAddressDefault);
-  HTTPWWWDirectory = StringCopy(HTTPWWWDirectoryDefault);
 }
 
 /*****************************************************************************!
@@ -101,7 +88,7 @@ HTTPServerThread
 (void* InParameters)
 {
   mg_mgr_init(&HTTPManager, NULL);
-  HTTPConnection = mg_bind(&HTTPManager, HTTPPortAddress, HTTPServerEventHandler);
+  HTTPConnection = mg_bind(&HTTPManager, WebSocketHTTPGetHTTPPortAddress(), HTTPServerEventHandler);
 
   if ( NULL == HTTPConnection ) {
     fprintf(stderr, "%sFailed to create HTTP server%s\n", ColorBrightRed, ColorReset);
@@ -109,7 +96,7 @@ HTTPServerThread
   }
 
   mg_set_protocol_http_websocket(HTTPConnection);
-  HTTPServerOptions.document_root = HTTPWWWDirectory;
+  HTTPServerOptions.document_root = WebSocketHTTPGetWWWDirectory();
   HTTPServerOptions.enable_directory_listing = "yes";
   WebSocketServerStart();
   while ( true ) {
@@ -127,40 +114,6 @@ HTTPServerEventHandler
   if ( InEvent == MG_EV_HTTP_REQUEST ) {
     mg_serve_http(InConnection, (struct http_message*)InParameter, HTTPServerOptions);
   }
-}
-
-/*****************************************************************************!
- * Function : HTTPServerSetDirectory
- *****************************************************************************/
-void
-HTTPServerSetDirectory
-(string InFilename)
-{
-  if ( InFilename == NULL ) {
-        return;
-  }
-
-  if ( HTTPWWWDirectory ) {
-        FreeMemory(HTTPWWWDirectory);
-  }
-  HTTPWWWDirectory = StringCopy(InFilename);
-}
-
-/*****************************************************************************!
- * Function : HTTPServerSetPort
- *****************************************************************************/
-void
-HTTPServerSetPort
-(string InPort)
-{
-  if ( InPort == NULL ) {
-        return;
-  }
-
-  if ( HTTPPortAddress ) {
-        FreeMemory(HTTPPortAddress);
-  }
-  HTTPPortAddress = StringCopy(InPort);
 }
 
 /*****************************************************************************!

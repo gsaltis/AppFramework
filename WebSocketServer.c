@@ -38,6 +38,7 @@
 #include "GeneralUtilities/json.h"
 #include "UserInterfaceServer.h"
 #include "main.h"
+#include "WebSocketHTTPConfig.h"
 
 /*****************************************************************************!
  * Local Macros
@@ -62,18 +63,6 @@ WebSocketConnection;
 
 static struct mg_mgr
 WebSocketManager;
-
-static string
-WebSocketWWWDirectoryDefault = "www";
-
-static string
-WebSocketWWWDirectory = NULL;
-
-static string
-WebSocketPortAddressDefault = "8002";
-
-static string
-WebSocketPortAddress = NULL;
 
 static int
 WebSocketServerPollPeriod = 20;
@@ -123,9 +112,6 @@ WebSocketServerInitialize
 ()
 {
   WebSocketConnections = WebConnectionListCreate();
-  WebSocketPortAddress = WebSocketPortAddressDefault;
-  WebSocketPortAddress  = StringCopy(WebSocketPortAddressDefault);
-  WebSocketWWWDirectory = StringCopy(WebSocketWWWDirectoryDefault);
   WebSocketServerID = 0;
 }
 
@@ -151,21 +137,21 @@ WebSocketServerThread
 (void* InParameters)
 {
   mg_mgr_init(&WebSocketManager, NULL);
-  WebSocketConnection = mg_bind(&WebSocketManager, WebSocketPortAddress, WebSocketServerEventHandler);
+  WebSocketConnection = mg_bind(&WebSocketManager, WebSocketHTTPGetWebSocketHTTPPortAddress(), WebSocketServerEventHandler);
   if ( NULL == WebSocketConnection ) {
     fprintf(stdout, "%sFailed to create WebSocket server%s\n", ColorBrightRed, ColorReset);
     exit(EXIT_FAILURE);
   }
   mg_set_protocol_http_websocket(WebSocketConnection);
-  WebSocketServerOptions.document_root = WebSocketWWWDirectory;
+  WebSocketServerOptions.document_root = WebSocketHTTPGetWWWDirectory();
   WebSocketServerOptions.enable_directory_listing = "yes";
   
   printf("%sWeb Socket Server Thread : %sstarted%s\n"
          "%s  Port                   : %s%s%s\n"
          "%s  Directory              : %s%s%s\n", 
          ColorGreen, ColorYellow, ColorReset,
-         ColorCyan, ColorYellow, WebSocketPortAddress, ColorReset, 
-         ColorCyan, ColorYellow, WebSocketWWWDirectory, ColorReset);
+         ColorCyan, ColorYellow, WebSocketHTTPGetHTTPPortAddress(), ColorReset, 
+         ColorCyan, ColorYellow, WebSocketHTTPGetWWWDirectory(), ColorReset);
   WebSocketServerStartTime = time(NULL);
   UserInterfaceServerStart();
   while ( true ) {
@@ -269,7 +255,7 @@ WebSocketServerCreateInfoScript
           return;
         }
         fprintf(file, "var WebSocketIFAddress = \"%s\";\n", address);
-        fprintf(file, "var WebSocketIFPort = \"%s\";\n", WebSocketPortAddress);
+        fprintf(file, "var WebSocketIFPort = \"%s\";\n", WebSocketHTTPGetWebSocketHTTPPortAddress());
         fclose(file);
         FreeMemory(address);
         found = true;
