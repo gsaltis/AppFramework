@@ -16,14 +16,14 @@
 #include <errno.h>
 #include <ctype.h>
 #include <pthread.h>
+#include <StringUtils.h>
+#include <linenoise.h>
+#include <ANSIColors.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
 #include "UserInterfaceServer.h"
-#include "GeneralUtilities/StringUtils.h"
-#include "RPiBaseModules/linenoise.h"
-#include "GeneralUtilities/ANSIColors.h"
 
 /*****************************************************************************!
  * Local Macros

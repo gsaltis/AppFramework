@@ -13,14 +13,14 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <ANSIColors.h>
+#include <mongoose.h>
+#include <StringUtils.h>
+#include <MemoryManager.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
-#include "GeneralUtilities/ANSIColors.h"
-#include "RPiBaseModules/mongoose.h"
-#include "GeneralUtilities/StringUtils.h"
-#include "GeneralUtilities/MemoryManager.h"
 #include "HTTPServer.h"
 #include "WebSocketServer.h"
 #include "WebSocketHTTPConfig.h"

@@ -14,11 +14,11 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
+#include <StringUtils.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
-#include "GeneralUtilities/StringUtils.h"
 
 /*****************************************************************************!
  * Exported Macros

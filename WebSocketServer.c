@@ -24,18 +24,18 @@
 #include <net/if.h>
 #include <arpa/inet.h>
 #include <ifaddrs.h>
+#include <JSONIF.h>
+#include <JSONOut.h>
+#include <StringUtils.h>
+#include <MemoryManager.h>
+#include <ANSIColors.h>
+#include <json.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
 #include "WebSocketServer.h"
 #include "WebConnection.h"
-#include "GeneralUtilities/JSONIF.h"
-#include "GeneralUtilities/JSONOut.h"
-#include "GeneralUtilities/StringUtils.h"
-#include "GeneralUtilities/MemoryManager.h"
-#include "GeneralUtilities/ANSIColors.h"
-#include "GeneralUtilities/json.h"
 #include "UserInterfaceServer.h"
 #include "main.h"
 #include "WebSocketHTTPConfig.h"

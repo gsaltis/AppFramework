@@ -2,7 +2,7 @@ CC				       = gcc
 LINK				       = gcc
 CC_OPTS				       = -c -g -Wall
 CC_INCS				       = 
-LINK_OPTS			       = -g -LGeneralUtilities -LRPiBaseModules
+LINK_OPTS			       = -g 
 LINK_LIBS			       = -lutils -llinenoise -lmongoose -lpthread -lm
 
 include					 app.mk

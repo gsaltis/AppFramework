@@ -14,14 +14,14 @@
 #include <stdint.h>
 #include <string.h>
 #include <pthread.h>
+#include <MemoryManager.h>
+#include <StringUtils.h>
+#include <mongoose.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
 #include "WebConnection.h"
-#include "GeneralUtilities/MemoryManager.h"
-#include "GeneralUtilities/StringUtils.h"
-#include "RPiBaseModules/mongoose.h"
 #include "WebSocketHTTPConfig.h"
 
 /*****************************************************************************!

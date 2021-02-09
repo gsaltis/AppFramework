@@ -11,13 +11,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <StringUtils.h>
+#include <MemoryManager.h>
 
 /*****************************************************************************!
  * Local Headers
  *****************************************************************************/
 #include "WebSocketHTTPConfig.h"
-#include "GeneralUtilities/StringUtils.h"
-#include "GeneralUtilities/MemoryManager.h"
 
 /*****************************************************************************!
  * Local Macros
